@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-
+import React from "react";
+import { StylesProvider } from '@material-ui/core/styles';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+import { Provider } from 'react-redux';
+import Routing from './routes';
+import { Navbar, Spinner } from './components/shared';
+import {store} from './store'
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StylesProvider injectFirst>
+      <Provider store={store} >
+      {/* <Spinner></Spinner> */}
+        <Router>
+          <Navbar></Navbar>
+          <Routing></Routing>
+        </Router>
+      </Provider>
+    </StylesProvider>
+
   );
 }
 
