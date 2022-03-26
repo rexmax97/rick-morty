@@ -1,34 +1,35 @@
 import {
-    FETCH_CHARACTERS_START,
-    FETCH_CHARACTERS_SUCCESS,
-    FETCH_CHARACTERS_FAILURE,
+    FETCH_EPISODE_START,
+    FETCH_EPISODE_SUCCESS,
+    FETCH_EPISODE_FAILURE
 } from '../actions';
+
 
 //create initialState
 
 const initialState = {
-    character: [],
+    episode: [],
     isFetching: false,
     error: ''
 }
 
-export  const charactersReducers = (state = initialState, action) => {
+export const episodeReducers = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_CHARACTERS_START:
+        case FETCH_EPISODE_START:
             return {
                 ...state,
                 isFetching: true,
                 error: ''
 
             }
-        case FETCH_CHARACTERS_SUCCESS:
+        case FETCH_EPISODE_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: '',
-                characters: action.payload
+                episode: action.payload
             }
-        case FETCH_CHARACTERS_FAILURE:
+        case FETCH_EPISODE_FAILURE:
             return {
                 ...state,
                 isFetching: false,

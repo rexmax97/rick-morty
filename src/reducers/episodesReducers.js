@@ -1,7 +1,7 @@
 import {
-    FETCH_EPISODE_START,
-    FETCH_EPISODE_SUCCESS,
-    FETCH_EPISODE_FAILURE
+    FETCH_EPISODES_START,
+    FETCH_EPISODES_SUCCESS,
+    FETCH_EPISODES_FAILURE
 } from '../actions';
 
 
@@ -15,21 +15,21 @@ const initialState = {
 
 export const episodesReducers = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_EPISODE_START:
+        case FETCH_EPISODES_START:
             return {
                 ...state,
                 isFetching: true,
                 error: ''
 
             }
-        case FETCH_EPISODE_SUCCESS:
+        case FETCH_EPISODES_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: '',
                 episodes: action.payload
             }
-        case FETCH_EPISODE_FAILURE:
+        case FETCH_EPISODES_FAILURE:
             return {
                 ...state,
                 isFetching: false,

@@ -1,11 +1,11 @@
 import { React, useState, useEffect } from "react";
-import { character } from "../../actions";
+import { connect, useSelector } from 'react-redux';
 import {
   useParams
 } from "react-router-dom";
 import { Box } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-
+import { character } from "../../actions";
 const useStyles = makeStyles(theme => ({
   characterImage: {
    
@@ -14,28 +14,20 @@ const useStyles = makeStyles(theme => ({
     /* To change the font, use the fontFamily rule */
   },
 }));
-export default function Character(props) {
-  const classes = useStyles();
-  const [character, setStateCharacter] = useState([]);
-  let { id } = useParams();
-  console.log(id)
+const Character = (props)=>{
+  const classes=useStyles();
+ /*  const character = useSelector((state) => state.characterReducers.character) */
+  const  { id } = useParams();
   useEffect(() => {
 
-    fetchData(id);
+   props.character(id);
   }, []);
-  async function fetchData(id) {
-    console.log(id)
-    var characterData = [];
-    characterData = await character(id).then(response => { console.log(response.data); return response.data });
-    setStateCharacter(characterData);
-
-  }
 
 
 
   return (<>
-    {/*  <h1>Personaje</h1> */}
-    <Box>
+     <h1>Personaje</h1>
+    <Box sx={{ width: '100%', mt: 10}}>
       <img src={character.image} classes={{root:classes.characterImage}} ></img>
       <h1>{character.name}</h1>
     </Box>
@@ -43,3 +35,15 @@ export default function Character(props) {
 
   </>)
 }
+
+
+const mapStateToProps = state => {
+  // This is the longhand of what you did
+  return {
+    character: state.character,
+  };
+};
+
+
+//connect takes two arguments mapStateToProps and mapActionsToProps / or just an object 
+export default connect(mapStateToProps, { character })(Character);

@@ -10,11 +10,10 @@ import {
 import {Home, Contact, Character, Episode} from "../components/pages";
 function Routing() {
     return  <Routes>
-         
                 <Route index path="/" element={<Home />}/>     
                 <Route path="/home" element={<Home />}/>                   
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/profile/:id" element={<Character />} />
+                <Route path="/character/:id" element={<Character />} />
                 <Route path="/episode/:id" element={<Episode />} />
             </Routes>
 }
