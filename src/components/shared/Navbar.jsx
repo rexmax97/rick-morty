@@ -27,7 +27,7 @@ export default function Navbar() {
       <AppBar classes={{root:classes.appbar}}   position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} >
-           <img src="./assets/img/logo.png" height={50} width={50}/>
+           <img src="/assets/img/logo.png" height={50} width={50}/>
           </Typography>
           <Button color="inherit" component={Link} to="/"><Home/></Button>
           <Button color="inherit" component={Link} to="contact"><Info/></Button>

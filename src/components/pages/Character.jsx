@@ -17,9 +17,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 const Character = (props)=>{
+  const  { id } = useParams();
   const classes=useStyles();
   const character = useSelector((state) => state.characterReducers.character)
-  const  { id } = useParams();
+
   useEffect(() => {
 
    props.character(id);
@@ -34,15 +35,15 @@ const Character = (props)=>{
           container
           spacing={4}
           className={classes.gridContainer}
-          justify="center"
         >
             <Grid item xs={12} sm={12} md={12}>
                   <h1>Personaje</h1>
                 <Box sx={{ width: '100%', mt: 10}}>
-                  <img src={character.image} alt={character.title} classes={{root:classes.characterImage}} ></img>
+                  <img src={character.image?character.image:'/assets/img/unknown.jpeg'} alt={character.title} classes={{root:classes.characterImage}} ></img>
                   <h1>{character.name}</h1>
-                  <br></br>
-                  Tipo: <p>{character.type}</p>
+                  Tipo: <p>{character.type?character.type:'Sin Tipo'}</p>
+                  <p> Species: {character.species}</p>
+                  <p> Gender: {character.gender}</p>
                 </Box>
               </Grid>
           

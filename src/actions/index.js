@@ -59,7 +59,7 @@ export const episode= (id,params) => async (dispatch) => {
     dispatch({type:FETCH_EPISODE_START})
     await  instance
         .get(`/episode/${id}`)
-        .then(res => dispatch({type:FETCH_EPISODE_SUCCESS,payload:res}))
+        .then(res => dispatch({type:FETCH_EPISODE_SUCCESS,payload:res.data}))
         .catch(err => dispatch({type:FETCH_EPISODE_FAILURE,payload:err.response.data}))
 };
 export const locations=  params => instance.get('/location', params);

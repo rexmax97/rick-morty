@@ -72,14 +72,14 @@ const Home = (props) => {
           container
           spacing={4}
           className={classes.gridContainer}
-          justify="center"
+         
         >
             <Grid item xs={12} sm={12} md={12}>
             <SearchModal></SearchModal>
               </Grid>
-          {characters?.map((character) => {
-            return (<Grid item xs={12} sm={6} md={4}>
-              <OutlinedCard title={character.name} image={character.image} type={"character"}  id={character.id} content={"Specie: "+character.species+" Status: "+character.status}  />
+          {characters?.map((character, key) => {
+            return (<Grid key={"uniqueId"+key} item xs={12} sm={6} md={4}>
+              <OutlinedCard title={character.name} image={character.image?character.image:'/assets/img/unknown.jpeg'} type={"character"}  id={character.id} content={"Specie: "+character.species+" Status: "+character.status}  />
             </Grid>)
           })}
 
@@ -92,15 +92,15 @@ const Home = (props) => {
             container
             spacing={4}
             className={classes.gridContainer}
-            justify="center"
+            
           >
             <Grid item xs={12} sm={12} md={12}>
             <SearchModal></SearchModal>
               </Grid>
             
-            {episodes?.map((episode) => {
-              return (<Grid item xs={12} sm={6} md={4}>
-                <OutlinedCard title={episode.episode+": "+episode.name} image={episode.image?episode.image:'./assets/img/unknown.jpeg'}  type={"episode"} id={episode.id} content={"Air Date: "+episode.air_date} />
+            {episodes?.map((episode, key) => {
+              return (<Grid key={"uniqueId"+key} item xs={12} sm={6} md={4}>
+                <OutlinedCard title={episode.episode+": "+episode.name} image={episode.image?episode.image:'/assets/img/unknown.jpeg'}  type={"episode"} id={episode.id} content={"Air Date: "+episode.air_date} />
               </Grid>)
             })}
 
