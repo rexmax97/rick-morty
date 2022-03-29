@@ -33,7 +33,7 @@ export const  character =  (id,params) => async (dispatch) => {
     dispatch({type:FETCH_CHARACTER_START})
     await instance
         .get(`/character/${id}`)
-        .then(res => {console.log(res);dispatch({type:FETCH_CHARACTER_SUCCESS,payload:res})})
+        .then(res => {console.log(res);dispatch({type:FETCH_CHARACTER_SUCCESS,payload:res.data})})
         .catch(err => dispatch({type:FETCH_CHARACTER_FAILURE,payload:err.response.data}))
 };
 

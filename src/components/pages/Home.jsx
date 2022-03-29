@@ -77,7 +77,7 @@ const Home = (props) => {
             <Grid item xs={12} sm={12} md={12}>
             <SearchModal></SearchModal>
               </Grid>
-          {characters.map((character) => {
+          {characters?.map((character) => {
             return (<Grid item xs={12} sm={6} md={4}>
               <OutlinedCard title={character.name} image={character.image} type={"character"}  id={character.id} content={"Specie: "+character.species+" Status: "+character.status}  />
             </Grid>)
@@ -98,7 +98,7 @@ const Home = (props) => {
             <SearchModal></SearchModal>
               </Grid>
             
-            {episodes.map((episode) => {
+            {episodes?.map((episode) => {
               return (<Grid item xs={12} sm={6} md={4}>
                 <OutlinedCard title={episode.episode+": "+episode.name} image={episode.image?episode.image:'./assets/img/unknown.jpeg'}  type={"episode"} id={episode.id} content={"Air Date: "+episode.air_date} />
               </Grid>)

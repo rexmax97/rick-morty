@@ -6,6 +6,8 @@ import {
 import { Box } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { character } from "../../actions";
+import Grid from '@material-ui/core/Grid';
+
 const useStyles = makeStyles(theme => ({
   characterImage: {
    
@@ -16,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 }));
 const Character = (props)=>{
   const classes=useStyles();
- /*  const character = useSelector((state) => state.characterReducers.character) */
+  const character = useSelector((state) => state.characterReducers.character)
   const  { id } = useParams();
   useEffect(() => {
 
@@ -26,13 +28,27 @@ const Character = (props)=>{
 
 
   return (<>
-     <h1>Personaje</h1>
-    <Box sx={{ width: '100%', mt: 10}}>
-      <img src={character.image} classes={{root:classes.characterImage}} ></img>
-      <h1>{character.name}</h1>
-    </Box>
 
+<Box sx={{ width: '100%', mt: 10}}>
+        <Grid
+          container
+          spacing={4}
+          className={classes.gridContainer}
+          justify="center"
+        >
+            <Grid item xs={12} sm={12} md={12}>
+                  <h1>Personaje</h1>
+                <Box sx={{ width: '100%', mt: 10}}>
+                  <img src={character.image} alt={character.title} classes={{root:classes.characterImage}} ></img>
+                  <h1>{character.name}</h1>
+                  <br></br>
+                  Tipo: <p>{character.type}</p>
+                </Box>
+              </Grid>
+          
 
+        </Grid>
+</Box>
   </>)
 }
 
